@@ -1,0 +1,21 @@
+/* src/components/Background/Background.module.css */
+/* This file contains the styles for the Background component */
+/* This component is used to create a background for the application */
+
+.LogoContainer
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+    opacity: 0.5;
+
+    background-color: #89958e;
+    background-image: url("../../../public/NutriByteLogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

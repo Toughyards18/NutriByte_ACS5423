@@ -1,0 +1,22 @@
+{
+  "name": "nutribyte-backend",
+  "version": "1.0.0",
+  "description": "Backend for NutriByte App",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.21.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^7.8.6",
+    "nutribyte-backend": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

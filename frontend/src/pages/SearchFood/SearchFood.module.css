@@ -1,0 +1,12 @@
+.container {
+  padding: 1rem;
+}
+
+.searchInput {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+.resultsList {
+  margin-top: 1rem;
+}
