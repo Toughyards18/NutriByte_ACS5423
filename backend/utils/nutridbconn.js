@@ -1,19 +1,7 @@
 // backend/utils/nutridbconn.js
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import { execSync } from "child_process";
-// import path from "path";
 
-// // Load data before connecting
-// try {
-//     console.log("Starting data upload...");
-//     const uploadScript = path.resolve("utils/uploadAllFoods.js");
-//     execSync(`node ${uploadScript}`, { stdio: "inherit" });
-//     console.log("Data upload complete.");
-// } catch (err) {
-//     console.error("Data upload failed:", err.message);
-//     process.exit(1);
-// }
 
 dotenv.config();
 const MONGO_URI = dotenv.MONGO_URI_ATLAS;
