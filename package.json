@@ -3,7 +3,7 @@
 	"author": "Logan_Huba",
 	"version": "1.0.0",
 	"description": "Frontend for the NutriByte nutrition tracking application.",
-	"source": "./Start/Start.html",
+	"source": "./Frontend/Start/Start.html",
 	"proxy": "http://localhost:5000",
 	"jest": {
 		"transform": {
