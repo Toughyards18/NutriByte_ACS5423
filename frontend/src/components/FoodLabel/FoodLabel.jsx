@@ -25,7 +25,7 @@ export default function FoodLabel({ food }) {
   useEffect(() => {
     if (!nutrients.length && fdcId) {
       axios
-        .get(`http://localhost:5000/api/nutrients/${fdcId}`)
+        .get(`https://vvbghjxxbmpm-5000.na.app.codingrooms.com/api/nutrients/${fdcId}`)
         .then((res) => setNutrients(res.data))
         .catch((err) => {
           console.error('Failed to fetch nutrients:', err.message);
@@ -49,7 +49,7 @@ export default function FoodLabel({ food }) {
       className={`w-full max-w-md border border-black p-4 shadow-lg bg-white mb-4 font-sans ${styles.nutritionLabel}`}
     >
       <h2 className="text-2xl font-extrabold border-b-2 border-black pb-1">
-        {description || 'Unknown Item'}
+        {fdcId || 'Unknown Item'}
       </h2>
       {brandOwner && (
         <p className="text-sm italic mb-2">Brand: {brandOwner}</p>
@@ -60,8 +60,8 @@ export default function FoodLabel({ food }) {
 
       <div className="border-t border-b py-2 mt-2 mb-2">
         <p className="font-bold">Amount per serving</p>
-        <div className="flex justify-between">
-          <span>Calories</span>
+        <div className="flex justify-left">
+          <span>Calories : </span>
           <span>{getNutrient('Energy')}</span>
         </div>
       </div>
@@ -82,8 +82,8 @@ export default function FoodLabel({ food }) {
           ['Vitamin A', 'Vitamin A'],
           ['Vitamin C', 'Vitamin C'],
         ].map(([label, key]) => (
-          <div className="flex justify-between" key={key}>
-            <span>{label}</span>
+          <div className="flex justify-left" key={key}>
+            <span>{label} : </span>
             <span>{getNutrient(key)}</span>
           </div>
         ))}

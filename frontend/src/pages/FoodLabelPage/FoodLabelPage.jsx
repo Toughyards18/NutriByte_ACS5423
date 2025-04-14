@@ -8,7 +8,7 @@ export default function FoodLabelPage() {
   const [food, setFood] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/nutrients/${fdcId}`) // assuming your backend can handle lookup by ?id
+    axios.get(`https://vvbghjxxbmpm-5000.na.app.codingrooms.com/api/nutrients/${fdcId}`) // assuming your backend can handle lookup by ?id
       .then((res) => {
         if (Array.isArray(res.data)) setFood(res.data[0]);
         else setFood(res.data);

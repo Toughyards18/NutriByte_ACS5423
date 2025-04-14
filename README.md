@@ -1,5 +1,4 @@
-# NutriByte_ACS5423- Phase 1
-For ACS-5423
+# NutriByte - Phase 1
 
 ## Stack
 - Frontend: React + TailwindCSS + CSS Modules
@@ -20,6 +19,9 @@ node star-app.jsx
 ```bash
 new console
 cd ./backend/
+npm install express 
+npm install mongoose
+node ./utils/uploadAllFoods.js 
 npm install
 npm start
 ```
@@ -28,8 +30,8 @@ npm start
 ```bash
 new console
 cd ./frontend/
-npm install
 npm install -D tailwindcss
+npm install
 npm start
 ```
 

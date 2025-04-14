@@ -19,7 +19,7 @@ const MacroMeals = () => {
   const handleMacroSearch = async () => {
     try {
       const { protein, carbs, fat } = macros;
-      const res = await axios.get(`http://localhost:5000/api/macrosearch`, {
+      const res = await axios.get(`https://vvbghjxxbmpm-5000.na.app.codingrooms.com/api/macrosearch`, {
         params: { protein, carbs, fat }
       });
       setResults(res.data);

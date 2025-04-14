@@ -1,28 +1,12 @@
-import React from 'react';
-import classes from './Footer.module.css';
-
-// const Footer = () => {
-//   return (
-//    <div className={classes.customnav}>
-//         <p>&copy; 2023 NutriByte. All rights reserved.</p>
-//         <p>Made with ❤️ by the NutriByte Team</p>
-//     </div>
-
-//   );
-// };
-
-// export default Footer;
-
+import React from "react";
+import cFooter from "./Footer.module.css";
 
 export default function Footer() {
-  
-  return (
-    
-    <footer>
-        <p>&copy; 2023 NutriByte. All rights reserved.</p>
-        <p>Made with ❤️ by the NutriByte Team</p>
-    </footer>
-
-  );
+	return (
+		<footer className={cFooter.footer}>
+			<p className={cFooter.LeftParagraph}>&copy; 2025 NutriByte. All rights reserved.</p>
+			<p className={cFooter.RightParagraph}>Made with ❤️ by the NutriByte Team</p>
+			{/* </div> */}
+		</footer>
+	);
 }
-

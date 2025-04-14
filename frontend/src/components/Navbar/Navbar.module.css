@@ -1,3 +1,52 @@
+.navbar {
+    position: fixed; /* Fix the navbar to the top of the viewport */
+    top: 0; /* Align it to the top */
+    left: 0; /* Ensure it spans the full width */
+    width: 100%; /* Full width of the viewport */
+    display: flex; /* Use flexbox for layout */
+    background-color: hsl(204, 45%, 98%); /* Light background color */
+    justify-content: space-between; /* Space out the items */
+    align-items: center; /* Vertically center items */
+    padding: 1rem 2rem; /* Add padding for better spacing */
+    z-index: 10; /* Ensure it appears above other content */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.NameContainer {
+    flex: 1;
+    display: flex; /* Use flexbox for layout */ 
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Vertically center items */
+    justify-content: left; /* Space out the items */
+    gap: 1rem; /* Add spacing between items */    
+}
+
+.Titleheader {
+    font-size: 1.5rem; /* Adjust font size for better fit */
+    font-weight: bold;
+    color: #205A37;
+    text-align: left;
+    margin: 0; /* Remove unnecessary margins */
+    text-size-adjust: xlarge;
+    width: 5rem;
+}
+
+.image {
+    height: 3rem; /* Adjust size for better fit */
+    width: 3rem;
+    border-radius: 50%;
+    background-image: url("../../../public/NutriByteLogo.png");
+    background-size: cover; /* Ensure the image covers the container */
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.image:hover {
+    transform: rotate(360deg); /* Rotate the image on hover */
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -6,52 +55,29 @@
     margin: 3rem;
 }
 
-.container>* {
-    min-width: 25rem;
-    max-width: 40rem;
+.NavLinks {
+    display: flex; /* Use flexbox for layout */
+    flex: none; /* Prevent flex-grow */
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Vertically center items */
+    gap: 1rem; /* Add spacing between links */
+    background-color: #205A37; /* Dark background color */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.50), 0 2px 4px -2px rgba(0, 0, 0, 0.75); /* Shadow for depth */
+    margin: 0 2rem; /* Space around the navbar */
+    padding: 0 2rem; /* Add padding for better spacing */
+    border-radius: 0.5rem; /* Rounded corners */
+    justify-content: space-between; /* Space out the items */
 }
 
-
-
-.divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: #205A37;      
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.50), 0 2px 4px -2px rgba(0, 0, 0, 0.75);
-}
-
-.divider a {
+.NavLinks a {
     color: #7FEEFF;
     font-weight: bold;
     text-size-adjust: large;
 }
-.divider a:hover {
+.NavLinks a:hover {
     background: #7FEEFF;
     color:#205A37;
     cursor: pointer;
 }
 
 
-.image {
-    flex: 1 0;
-    display: flex;
-    height: 5rem;
-    width: 5rem;
-    background-image: url("../../../public/NutriByteLogo.png");
-    background-size: cover;
-    background-position: center;
-    border: none;
-
-    
-}
-
-.brandname {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #205A37;
-    text-align: center;
-    margin: 1rem;
-    text-decoration: none;
-    text-size-adjust: xlarge;
-}

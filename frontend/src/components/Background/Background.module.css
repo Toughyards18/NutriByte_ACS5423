@@ -2,20 +2,18 @@
 /* This file contains the styles for the Background component */
 /* This component is used to create a background for the application */
 
-.LogoContainer
-{
+.LogoContainer {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
     z-index: -1;
     opacity: 0.5;
 
     background-color: #89958e;
     background-image: url("../../../public/NutriByteLogo.png");
-    background-size: contain;
+    background-size: contain; /* Ensures the image covers the entire container */
     background-repeat: no-repeat;
     background-position: center;
 }

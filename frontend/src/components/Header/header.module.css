@@ -2,6 +2,7 @@
     background: #3D4A4F;
     padding: 0;
     border-bottom: 4px solid #205A37;
+    flex-direction: row;
 }
 
 
@@ -22,4 +23,10 @@
     padding: 0;
     margin: 0;
     color: #7FEEFF;
+}
+
+.TitleArea {
+    display: flex;
+    align-items: left;
+    flex: auto;
 }
