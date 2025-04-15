@@ -32,7 +32,7 @@ app.use(express.static(staticPath)); // serve static files
 app.get("*", (req, res) => {
     const filePath = path.join(staticPath, req.path); // get the file path
     res.send(filePath); // send the file path
-});
+}); // serve the static files
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
