@@ -8,10 +8,8 @@ pnpm-lock.yaml
 .npm
 
 # React
-build/
 frontend/dist/
-# public/
-# src/
+backend/public/
 .DS_Store
 
 # Logs
