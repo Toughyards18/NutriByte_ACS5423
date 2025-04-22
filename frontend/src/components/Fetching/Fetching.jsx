@@ -14,7 +14,7 @@ export default function Fetching()
     return (
         <div className={classes.container}>
             <div className={classes.items}>
-                <img src="../../../public/Fetching." alt="Loading!" />
+                <img src="../../../public/Fetching.gif" alt="Loading!" />
                 <h1>Loading...</h1>
             </div>
         </div>

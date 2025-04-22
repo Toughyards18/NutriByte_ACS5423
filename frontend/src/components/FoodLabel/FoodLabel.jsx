@@ -92,7 +92,7 @@ export default function FoodLabel({ food })
                     ["Vitamin A", "Vitamin A"],
                     ["Vitamin C", "Vitamin C"],
                 ].map(([label, key]) => (
-                    <div className="flex justify-left" key={key}>
+                    <div className="flex justify-center" key={key}>
                         <span>{label} : </span>
                         <span>{getNutrient(key)}</span>
                     </div>
