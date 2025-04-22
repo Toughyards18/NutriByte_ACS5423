@@ -6,9 +6,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./FoodLabel.module.css";
-import dotenv from "dotenv";
+import Fetching from "../Fetching/Fetching";
 
-export default function FoodLabel({ food }) {
+export default function FoodLabel({ food })
+{
     if (!food) return null;
 
     const {
@@ -23,16 +24,17 @@ export default function FoodLabel({ food }) {
     const [nutrients, setNutrients] = useState(food.nutrients || []);
     const [loading, setLoading] = useState(!food.nutrients?.length);
 
-    dotenv.config();
-    const APIString = process.env.proxy || "http://localhost:5000";
+    const APIString = import.meta.env.VITE_BACKENDAPISTRING || "http://localhost:5000";
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         if (!nutrients.length && fdcId) 
         {
             axios
                 .get(APIString + `/api/nutrients/${fdcId}`)
                 .then((res) => setNutrients(res.data))
-                .catch((err) => {
+                .catch((err) =>
+                {
                     console.error("Failed to fetch nutrients:", err.message);
                     setNutrients([]);
                 })
@@ -40,14 +42,17 @@ export default function FoodLabel({ food }) {
         }
     }, [fdcId, nutrients.length]);
 
-    const getNutrient = (name) => {
+    const getNutrient = (name) =>
+    {
         const match = nutrients.find((n) =>
             n.nutrientName.toLowerCase().includes(name.toLowerCase())
         );
         return match ? `${match.amount} ${match.nutrientUnit}` : "N/A";
     };
 
-    if (loading) return <p>Loading nutrition label...</p>;
+    // if (loading) return <Fetching />; // Show loading animation if data is being fetched
+    if (loading) return <p className="text-center">Retrieving nutrition label...</p>; // Show loading animation if data is being fetched
+    if (!nutrients.length) return <p>No nutritional information available.</p>; // Handle case where no nutrients are found
 
     return (
         <div
@@ -102,3 +107,4 @@ export default function FoodLabel({ food }) {
         </div>
     );
 }
+

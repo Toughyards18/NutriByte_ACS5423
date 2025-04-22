@@ -5,26 +5,35 @@ import axios from 'axios';
 import FoodList from '../../components/FoodList/FoodList';
 import './MacroMeals.module.css';
 
-const MacroMeals = () => {
+const MacroMeals = () =>
+{
   const [macros, setMacros] = useState({ protein: 50, carbs: 50, fat: 20 });
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
 
+  const APIString = process.env.REACT_APP_PROXY || "http://localhost:5000";
 
-  const handleSliderChange = (e) => {
+
+  const handleSliderChange = (e) =>
+  {
     const { name, value } = e.target;
     setMacros((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleMacroSearch = async () => {
-    try {
+
+
+  const handleMacroSearch = async () =>
+  {
+    try
+    {
       const { protein, carbs, fat } = macros;
-      const res = await axios.get(`https://vvbghjxxbmpm-5000.na.app.codingrooms.com/api/macrosearch`, {
+      const res = await axios.get(APIString + `/api/macrosearch`, {
         params: { protein, carbs, fat }
       });
       setResults(res.data);
       setShowResults(true);
-    } catch (err) {
+    } catch (err)
+    {
       console.error("Macro search failed:", err.message);
       setResults([]);
       setShowResults(true);
@@ -66,9 +75,9 @@ const MacroMeals = () => {
 
         {
           showResults && (
-          <div className="mt-6 w-full">
-            <FoodList foods={results} searchString={`P${macros.protein} C${macros.carbs} F${macros.fat}`} />
-          </div>
+            <div className="mt-6 w-full">
+              <FoodList foods={results} searchString={`P${macros.protein} C${macros.carbs} F${macros.fat}`} />
+            </div>
           )
         }
       </div>

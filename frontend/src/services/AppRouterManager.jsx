@@ -16,22 +16,25 @@ import CompareFood from "../pages/CompareFood/CompareFood";
 import CustomMeals from "../pages/CustomMeals/CustomMeals";
 import MacroMeals from "../pages/MacroMeals/MacroMeals";
 import FoodLabelPage from "../pages/FoodLabelPage/FoodLabelPage";
+import Fetching from "../components/Fetching/Fetching";
 
-function App() {
-	return (
-		<Router>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<LandingPage />} />
-				<Route path="/search" element={<SearchFood />} />
-				<Route path="/compare" element={<CompareFood />} />
-				<Route path="/custom" element={<CustomMeals />} />
-				<Route path="/macros" element={<MacroMeals />} />
-				<Route path="/label/:fdcId" element={<FoodLabelPage />} />
-			</Routes>
-			<Footer />
-		</Router>
-	);
+function AppRoutes()
+{
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/search" element={<SearchFood />} />
+                <Route path="/compare" element={<CompareFood />} />
+                <Route path="/custom" element={<CustomMeals />} />
+                <Route path="/macros" element={<MacroMeals />} />
+                <Route path="/label/:fdcId" element={<FoodLabelPage />} />
+                <Route path="/Loading" element={<Fetching />} />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
-export default App;
+export default AppRoutes;

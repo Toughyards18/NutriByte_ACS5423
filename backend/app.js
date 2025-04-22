@@ -1,3 +1,5 @@
+// backend/app.js
+// This is the main entry point for the backend server. It sets up the Express server, connects to the database, and defines the routes for the API.
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -29,7 +31,8 @@ app.use("/api/macrosearch", macroSearchRoutes); // macro search routes
 const staticPath = path.join(__dirname, "build"); // set the static path
 app.use(express.static(staticPath)); // serve static files
 
-app.get("*", (req, res) => {
+app.get("*", (req, res) =>
+{
     const filePath = path.join(staticPath, req.path); // get the file path
     res.send(filePath); // send the file path
 }); // serve the static files

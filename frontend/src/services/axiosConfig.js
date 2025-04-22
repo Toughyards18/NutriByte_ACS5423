@@ -1,4 +1,8 @@
+// src/services/axiosConfig.js
 import axios from 'axios';
 
-axios.defaults.baseURL =
-  process.env.NODE_ENV !== 'production' ? 'http://localhost:5000' : '/';
+const axiosInstance = axios.create({
+  baseURL: process.env.BASE_URL || 'http://localhost:5000',
+});
+
+export default axiosInstance;
