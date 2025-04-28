@@ -3,7 +3,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./utils/nutridbconn.js";
+import { connectDB } from "./utils/nutridbconn.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 

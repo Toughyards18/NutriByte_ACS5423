@@ -1,4 +1,4 @@
-//  src/logic/LodingLogic.jsx
+//  src/logic/LoadingProvider.jsx
 // This file contains the logic for managing loading state in the application.
 import React, { useState, createContext, useContext } from "react";
 
@@ -17,5 +17,4 @@ export const LoadingProvider = ({ children }) =>
         </LoadingContext.Provider>
     );
 }
-
 
