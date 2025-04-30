@@ -32,7 +32,7 @@ export default function FoodLabel({ food }: Readonly<FoodLabelProps>) {
         return Math.round((amount / dailyValue) * 100);
     };
 
-    if (!nutrients.length) return <p className="text-center">No nutritional information available.</p>;
+    if (!nutrients || nutrients.length) return <p className="text-center">No nutritional information available.</p>;
 
     return (
         <div className={styles.foodLabel}>

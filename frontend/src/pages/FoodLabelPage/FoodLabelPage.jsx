@@ -7,30 +7,61 @@ import FoodLabel from '../../components/FoodLabel/FoodLabel';
 import Fetching from '../../components/Fetching/Fetching';
 import { fetchFoodById } from '../../logic/apiManager'; // Importing the API function to fetch food data
 
+
+
+const loadFoodWithCache = async (fdcId) =>
+{
+  const cacheKey = `food-${fdcId}`;
+  const cached = sessionStorage.getItem(cacheKey);
+
+  if (cached)
+  {
+    console.log("Loaded food from cache:", cacheKey);
+    return JSON.parse(cached);
+  }
+
+  const { data, error } = await fetchFoodById(fdcId);
+  if (error)
+  {
+    console.error("API error:", error);
+    return null;
+  }
+
+  const food = Array.isArray(data) ? data[0] : data;
+  if (food)
+  {
+    sessionStorage.setItem(cacheKey, JSON.stringify(food));
+  }
+
+  return food ?? null;
+};
+
+
+
+
+
 export default function FoodLabelPage()
 {
   const { fdcId } = useParams();
   const [food, setFood] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() =>
   {
-    fetchFoodById(fdcId).then(({ data, error }) =>
+    if (!fdcId) return;
+
+    setLoading(true);
+
+    loadFoodWithCache(fdcId).then((fetchedFood) =>
     {
-      if (error)
-      {
-        console.error("Failed to fetch food data:", error);
-        setFood(null);
-      }
-      else
-      {
-        setFood(Array.isArray(data) ? data[0] : data);
-      }
+      setFood(fetchedFood);
       setLoading(false);
     });
   }, [fdcId]);
 
-  if (loading) return <p className="text-center">Getting Nutrient data...</p>;
+  if (loading) return <div> <Fetching /> </div>;
+
+  // if (loading) return <p className="text-center">Getting Nutrient data...</p>;
   return (
     <div className="p-4">
       {food ? <FoodLabel food={food} /> : <p className="text-center">No food found.</p>}

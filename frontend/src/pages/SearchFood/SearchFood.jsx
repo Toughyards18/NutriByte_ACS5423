@@ -3,9 +3,9 @@
 // It uses a search input field and a button to trigger the search.
 // The search results are displayed in a list format using the FoodList component.
 // It also handles the API call to fetch the food data based on the search query.
-import React, { useState } from 'react';;
-import axios from "axios";
-import FoodList from "../../components/FoodList/FoodList";
+import React, { useState, useEffect } from 'react';
+import { searchFoods } from "../../logic/apiManager"; // Importing the API manager
+import FoodList from "../../components/FoodList/FoodList"; // Importing the FoodList component to display search results
 import { useLoading } from "../../logic/LoadingProvider"; // Update the path as needed
 import Fetching from "../../components/Fetching/Fetching"; // Optional if Fetching will show below
 
@@ -18,22 +18,53 @@ export default function SearchFood()
 	const [results, setResults] = useState([]);
 	const { showLoading, hideLoading } = useLoading();
 
-	const APIString = import.meta.env.VITE_API_URL || "http://localhost:5000";
+	// Restore last search on page load
+	useEffect(() =>
+	{
+		const lastQuery = sessionStorage.getItem("last-query");
+		const lastResults = sessionStorage.getItem(`search-${lastQuery?.toLowerCase()}`);
+		if (lastQuery && lastResults)
+		{
+			setQuery(lastQuery);
+			setResults(JSON.parse(lastResults));
+		}
+	}, []);
 
 
 	const handleSearch = async () =>
 	{
+		if (!query.trim()) return;
+
+		const cacheKey = `search-${query.toLowerCase()}`;
+		const cached = sessionStorage.getItem(cacheKey);
+
+		showLoading();
+
 		try
 		{
-			showLoading(); // Show loading
-			console.log("Searching from:", APIString);
-			console.log("Search for:", query);
-			const res = await axios.get(APIString + `/api/foods?searchString=${encodeURIComponent(query)}`);
-			console.log("Search results:", res.data);
-			setResults(res.data);
-		} catch (error)
+			if (cached)
+			{
+				console.log("Loaded from cache:", cacheKey);
+				setResults(JSON.parse(cached));
+			} else
+			{
+				const { data, error } = await searchFoods(query);
+				if (error)
+				{
+					console.error("Search error:", error);
+				} else
+				{
+					setResults(data);
+					sessionStorage.setItem(cacheKey, JSON.stringify(data));
+				}
+			}
+
+			// Save last-used query for auto-restore
+			sessionStorage.setItem("last-query", query);
+		}
+		catch (err)
 		{
-			console.error("Error fetching search results:", error);
+			console.error("Unexpected error:", err);
 		}
 		finally
 		{
@@ -46,18 +77,17 @@ export default function SearchFood()
 	return (
 		<div className="p-4 align-center flex flex-col">
 			<h1 className={classes.searchHeader}>Search for Food or Ingredient</h1>
-			<p className={classes.container}>
-				<input className={classes.searchInput} placeholder="Enter food name or ingredient" value={query} onChange={(e) => setQuery(e.target.value)} />
+			<div className={classes.container}>
+				<input className={classes.searchInput}
+					placeholder="Enter food name or ingredient"
+					value={query}
+					onChange={(e) => setQuery(e.target.value)} />
 
 				<button className={classes.searchButton} onClick={handleSearch}>
 					Search
 				</button>
-			</p>
-			{/* Display the search results */}
-
-
-			{results.length === 0 ? <p className="text-center">Select the search button.</p> : <FoodList foods={results} searchString={query} />}
-			{/* {results ? <FoodList food={results} searchString={query} /> : <p className="text-center">Searching database...</p>} */}
+			</div>
+			{results?.length > 0 ? (<FoodList foods={results} searchString={query} />) : (<p className="text-center mt-4">Select the search button.</p>)}
 		</div>
 	);
 }
