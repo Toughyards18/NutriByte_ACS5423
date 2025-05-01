@@ -15,7 +15,7 @@
 		"npm": "10.x"
 	},
 	"scripts": {
-		"prebuild": "cd backend && npm install & cd ../frontend && npm install",
+		"prebuild": "cd backend && npm install && cd ../frontend && npm install",
 		"build": "cd frontend &&  npm run build",
 		"postbuild": "mv -f frontend//build backend/public",
 		"start": "cd backend && npm run start"
@@ -27,7 +27,8 @@
 		"nutribyte-frontend": "file:",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.30.0"
+		"react-router-dom": "^6.30.0",
+		"vite": "^6.3.2"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.21",
