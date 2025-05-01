@@ -17,7 +17,7 @@
 	"scripts": {
 		"prebuild": "cd backend && npm install && cd ../frontend && npm install",
 		"build": "cd frontend &&  npm run build",
-		"postbuild": "mv -f frontend//build backend/public",
+		"postbuild": "mv -f frontend/dist backend/public",
 		"start": "cd backend && npm run start"
 	},
 	"keywords": [],
