@@ -3,10 +3,10 @@
 // src/components/FoodLabel.tsx
 import React from "react";
 import styles from "../FoodLabel/FoodLabel.module.css"; 
-import { Food, NUTRIENT_LABELS, DAILY_VALUES, NUTRIENT_SORT_ORDER } from "../../assets/constants";
+import { FoodInterface, NUTRIENT_LABELS, DAILY_VALUES, NUTRIENT_SORT_ORDER } from "../../assets/constants";
 
 interface FoodLabelProps {
-    food: Food;
+    food: FoodInterface | null;
 }
 
 export default function FoodLabel({ food }: Readonly<FoodLabelProps>) {
@@ -32,9 +32,10 @@ export default function FoodLabel({ food }: Readonly<FoodLabelProps>) {
         return Math.round((amount / dailyValue) * 100);
     };
 
-    if (!nutrients || nutrients.length) return <p className="text-center">No nutritional information available.</p>;
+    if (!nutrients || nutrients.length === 0) return <p className="text-center">No nutritional information available.</p>;
 
     return (
+        console.log("Rendering FoodLabel component"),
         <div className={styles.foodLabel}>
             <h2 className={styles.heading}>
                 {description || fdcId || "Unknown Item"}

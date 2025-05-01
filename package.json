@@ -10,8 +10,12 @@
 			"^.+\\.(js|jsx)$": "babel-jest"
 		}
 	},
+	"engines": {
+		"node": "22.x",
+		"npm": "10.x"
+	},
 	"scripts": {
-		"prebuild": "cd backend && npm install & cd frontend && npm install",
+		"prebuild": "cd backend && npm install & cd f../frontend && npm install",
 		"build": "cd frontend &&  npm run build",
 		"postbuild": "mv -f frontend//build backend/public",
 		"start": "cd backend && npm run start"
@@ -42,4 +46,3 @@
 		"vm-browserify": "^1.1.2"
 	}
 }
-

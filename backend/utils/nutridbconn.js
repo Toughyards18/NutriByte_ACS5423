@@ -6,7 +6,8 @@ dotenv.config();
 // MongoDB URI
 // This URI is used to connect to the MongoDB database.
 
-const MONGO_URI = process.env.MONGO_URI + process.env.MONGO_DB || "mongodb://localhost:27017/nutribytedata";
+// const MONGO_URI = process.env.MONGO_URI + process.env.MONGO_DB || "mongodb://localhost:27017/nutribytedata";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/nutribytedata";
 const dbLogging = process.env.DB_LOGGING || false;
 
 // Connect to MongoDB
@@ -45,3 +46,4 @@ export const connectDB = async () =>
 		process.exit(1);
 	}
 };
+

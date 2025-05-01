@@ -16,7 +16,7 @@ export interface Nutrient {
 
 
 // Food object structure template (not an enforced type, just for developer reference)
-export interface Food {
+export interface FoodInterface {
     fdcId: number;
     description: string;
     brandOwner?: string;
