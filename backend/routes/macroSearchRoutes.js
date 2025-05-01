@@ -7,24 +7,40 @@ import BrandedFood from "../models/brandedFoodSchema.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const { protein = 0, carbs = 0, fat = 0 } = req.query;
+router.get("/", async (req, res) =>
+{
+  const { proteinCenter = 0, proteinLowTolerance = 0, proteinHigTolerance = 0,
+    carbsCenter = 0, carbsLowTolerance = 0, carbsHigTolerance = 0,
+    fatCenter = 0, fatLowTolerance = 0, fatHighTolerance = 0, } = req.query;
   const tolerance = 0; // +/- g buffer for matching
 
-  try {
+
+  // Helper to convert and calculate min/max
+  const toNum = (val) => (val !== undefined ? +val : 0);
+
+  const proteinMin = toNum(proteinCenter) - toNum(proteinLowTolerance);
+  const proteinMax = toNum(proteinCenter) + toNum(proteinHigTolerance);
+  const carbsMin = toNum(carbsCenter) - toNum(carbsLowTolerance);
+  const carbsMax = toNum(carbsCenter) + toNum(carbsHigTolerance);
+  const fatMin = toNum(fatCenter) - toNum(fatLowTolerance);
+  const fatMax = toNum(fatCenter) + toNum(fatHighTolerance);
+
+
+  try
+  {
     const proteinDocs = await FoodNutrient.find({
       nutrientName: "Protein",
-      amount: { $gte: +protein - tolerance, $lte: +protein + tolerance },
+      amount: { $gte: proteinMin, $lte: proteinMax },
     }).select("fdcId");
 
     const carbsDocs = await FoodNutrient.find({
       nutrientName: "Carbohydrate, by difference",
-      amount: { $gte: +carbs - tolerance, $lte: +carbs + tolerance },
+      amount: { $gte: carbsMin, $lte: carbsMax },
     }).select("fdcId");
 
     const fatDocs = await FoodNutrient.find({
       nutrientName: "Total lipid (fat)",
-      amount: { $gte: +fat - tolerance, $lte: +fat + tolerance },
+      amount: { $gte: fatMin, $lte: fatMax },
     }).select("fdcId");
 
     // Convert to sets of IDs
@@ -41,7 +57,9 @@ router.get("/", async (req, res) => {
     const foods = await BrandedFood.find({ fdcId: { $in: commonFdcIds } });
 
     res.json(foods);
-  } catch (err) {
+  }
+  catch (err)
+  {
     console.error("Macro search failed:", err.message);
     res.status(500).json({ error: "Server error" });
   }
