@@ -8,7 +8,7 @@ dotenv.config();
 
 // const MONGO_URI = process.env.MONGO_URI + process.env.MONGO_DB || "mongodb://localhost:27017/nutribytedata";
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/nutribytedata";
-const dbLogging = process.env.DB_LOGGING || false;
+const dbLogging = process.env.DB_LOGGING === "true" || false; // Enable or disable database logging based on environment variable
 
 // Connect to MongoDB
 // This function connects to the MongoDB database using Mongoose.

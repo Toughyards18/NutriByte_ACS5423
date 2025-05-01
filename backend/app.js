@@ -28,14 +28,15 @@ app.use("/api/foods", brandedFoodRoutes); // food search (by description, brand,
 app.use("/api/nutrients", foodNutrientsRoutes); // nutrient data by fdcId
 app.use("/api/macrosearch", macroSearchRoutes); // macro search routes
 
-const staticPath = path.join(__dirname, "build"); // set the static path
+const staticPath = path.join(__dirname, "public"); // set the static path
 app.use(express.static(staticPath)); // serve static files
 
 app.get("*", (req, res) =>
 {
-    const filePath = path.join(staticPath, req.path); // get the file path
-    res.send(filePath); // send the file path
+    const filePath = path.join(staticPath, "index.html"); // get the file path
+    res.sendFile(filePath); // send the file path
 }); // serve the static files
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
