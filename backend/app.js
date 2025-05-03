@@ -21,7 +21,9 @@ const __dirname = dirname(__filename); // get the directory name
 dotenv.config();
 const app = express();
 
-app.use(cors({}));
+const allowedOrigins = [process.env.FRONTEND_URL || "http://localhost:5173"];
+
+app.use(cors({ origin: allowedOrigins, credentials: true })); // enable CORS for the specified origins
 
 app.use(express.json());
 
