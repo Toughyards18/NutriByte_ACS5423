@@ -15,7 +15,7 @@ const MacroMeals = () =>
 
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const APIString = process.env.REACT_APP_PROXY || "http://localhost:5000";
+  const APIString = import.meta.env.REACT_APP_PROXY || "http://localhost:5000";
 
   const handleRangeChange = (macro, field, value) =>
   {

@@ -9,21 +9,21 @@ const router = express.Router();
 
 router.get("/", async (req, res) =>
 {
-  const { proteinCenter = 0, proteinLowTolerance = 0, proteinHigTolerance = 0,
-    carbsCenter = 0, carbsLowTolerance = 0, carbsHigTolerance = 0,
-    fatCenter = 0, fatLowTolerance = 0, fatHighTolerance = 0, } = req.query;
-  const tolerance = 0; // +/- g buffer for matching
+  const {
+    proteinCenter = 0, proteinTolLow = 0, proteinTolHigh = 0,
+    carbsCenter = 0, carbsTolLow = 0, carbsTolHigh = 0,
+    fatCenter = 0, fatTolLow = 0, fatTolHigh = 0, } = req.query; // +/- g buffer for matching
 
 
   // Helper to convert and calculate min/max
   const toNum = (val) => (val !== undefined ? +val : 0);
 
-  const proteinMin = toNum(proteinCenter) - toNum(proteinLowTolerance);
-  const proteinMax = toNum(proteinCenter) + toNum(proteinHigTolerance);
-  const carbsMin = toNum(carbsCenter) - toNum(carbsLowTolerance);
-  const carbsMax = toNum(carbsCenter) + toNum(carbsHigTolerance);
-  const fatMin = toNum(fatCenter) - toNum(fatLowTolerance);
-  const fatMax = toNum(fatCenter) + toNum(fatHighTolerance);
+  const proteinMin = toNum(proteinCenter) - toNum(proteinTolLow);
+  const proteinMax = toNum(proteinCenter) + toNum(proteinTolHigh);
+  const carbsMin = toNum(carbsCenter) - toNum(carbsTolLow);
+  const carbsMax = toNum(carbsCenter) + toNum(carbsTolHigh);
+  const fatMin = toNum(fatCenter) - toNum(fatTolLow);
+  const fatMax = toNum(fatCenter) + toNum(fatTolHigh);
 
 
   try
