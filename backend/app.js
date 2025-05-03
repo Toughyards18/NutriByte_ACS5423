@@ -10,6 +10,9 @@ import { dirname } from "path";
 import foodNutrientsRoutes from "./routes/foodNutrientsRoutes.js";
 import brandedFoodRoutes from "./routes/brandedFoodRoutes.js";
 import macroSearchRoutes from "./routes/macroSearchRoutes.js";
+import authRoutes from './routes/authRoutes.js';
+import logRoutes from './routes/logRoutes.js'
+
 import path from "path/posix";
 
 const __filename = fileURLToPath(import.meta.url); // get the file name
@@ -24,9 +27,16 @@ app.use(express.json());
 
 connectDB();
 
+app.use('/api/auth', authRoutes); // authentication routes
 app.use("/api/foods", brandedFoodRoutes); // food search (by description, brand, etc.)
-app.use("/api/nutrients", foodNutrientsRoutes); // nutrient data by fdcId
+app.use("/api/nutrients/", foodNutrientsRoutes); // nutrient data by fdcId
+app.use("/api/nutrients/", foodNutrientsRoutes); // nutrient data by fdcId
 app.use("/api/macrosearch", macroSearchRoutes); // macro search routes
+app.use("/api/logs", logRoutes); // food log routes
+app.use("/api", (req, res) =>
+{
+    res.status(404).json({ message: "Route not found" });
+}); // handle 404 errors
 
 const staticPath = path.join(__dirname, "public"); // set the static path
 app.use(express.static(staticPath)); // serve static files

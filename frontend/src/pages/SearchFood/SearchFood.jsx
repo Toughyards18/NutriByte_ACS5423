@@ -30,6 +30,26 @@ export default function SearchFood()
 		}
 	}, []);
 
+	function safeSessionStorageSet(key, value)
+	{
+		const json = JSON.stringify(value);
+		const sizeInKB = new TextEncoder().encode(json).length / 1024;
+
+		if (sizeInKB > 4000)
+		{
+			console.warn(`SessionStorage save skipped — size ${Math.round(sizeInKB)}KB exceeds safe limit.`);
+			return;
+		}
+
+		try
+		{
+			sessionStorage.setItem(key, json);
+		} catch (e)
+		{
+			console.error("Failed to save to sessionStorage:", e);
+		}
+	}
+
 
 	const handleSearch = async () =>
 	{
@@ -55,7 +75,7 @@ export default function SearchFood()
 				} else
 				{
 					setResults(data);
-					sessionStorage.setItem(cacheKey, JSON.stringify(data));
+					safeSessionStorageSet(cacheKey, data);
 				}
 			}
 

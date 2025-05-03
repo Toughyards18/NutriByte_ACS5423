@@ -1,11 +1,17 @@
+// file: backend/routes/brandedFoodRoutes.js
+// This file defines the routes for branded food items search.
+// It includes a GET route to search for food items based on a search string in the description, ingredients, or brand owner fields.
+
 import express from "express"; // Import express for routing
 import Food from "../models/brandedFoodSchema.js"; // Import the Food model
 
 const router = express.Router();
 
 // GET /api/foods?searchString=cheese
-router.get("/", async (req, res) => {
-  try {
+router.get("/", async (req, res) =>
+{
+  try
+  {
     const searchString = req.query.searchString || "";
     const foodItems = await Food.find({
       $or: [
@@ -18,9 +24,11 @@ router.get("/", async (req, res) => {
       `Found ${foodItems.length} enntries of ${req.query.searchString}.`
     );
     res.json(foodItems); // Send JSON to the frontend
-  } catch (err) {
+  } catch (err)
+  {
     res.status(500).json({ error: err.message });
   }
 });
 
 export default router;
+

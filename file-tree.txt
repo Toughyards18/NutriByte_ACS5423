@@ -1,0 +1,144 @@
+.
+|____backend
+| |____.env
+| |____app.js
+| |____controllers
+| | |____authController.js
+| | |____logController.js
+| |____data
+| | |____branded_foods_01.json
+| | |____branded_foods_04.json
+| | |____branded_foods_07.json
+| | |____branded_foods_08.json
+| | |____food_attributes_01.json
+| | |____food_attributes_04.json
+| | |____food_attributes_07.json
+| | |____food_attributes_08.json
+| | |____food_descriptions_01.json
+| | |____food_descriptions_04.json
+| | |____food_descriptions_07.json
+| | |____food_descriptions_08.json
+| | |____food_nutrients_01.json
+| | |____food_nutrients_04.json
+| | |____food_nutrients_07.json
+| | |____food_nutrients_08.json
+| |____middleware
+| | |____authMiddleware.js
+| | |____InitFirebase.js
+| |____models
+| | |____AttributeSchema.js
+| | |____brandedFoodSchema.js
+| | |____descriptionSchema.js
+| | |____foodNutrientSchema.js
+| | |____User.js
+| |____nodemon.json
+| |____package-lock.json
+| |____package.json
+| |____public
+| | |____assets
+| | | |____index-CpDjzHWr.js
+| | | |____index-DCyuvGjy.css
+| | | |____NutriByteLogo-vBm-SJ22.png
+| | |____favicon.ico
+| | |____Fetching.GIF
+| | |____index.html
+| | |____NutriByteLogo.png
+| |____routes
+| | |____authRoutes.js
+| | |____brandedFoodRoutes.js
+| | |____foodNutrientsRoutes.js
+| | |____logRoutes.js
+| | |____macroSearchRoutes.js
+| |____server.js
+| |____utils
+| | |____Data
+| | | |____branded_foods_01.json
+| | | |____food_attributes_01.json
+| | | |____food_descriptions_01.json
+| | | |____food_nutrients_01.json
+| | |____nutridbconn.js
+| | |____uploadAllFoods.js
+|____frontend
+| |____.env
+| |____index.css
+| |____index.html
+| |____index.jsx
+| |____package-lock.json
+| |____package.json
+| |____public
+| | |____favicon.ico
+| | |____Fetching.GIF
+| | |____NutriByteLogo.png
+| |____src
+| | |____assets
+| | | |____constants.ts
+| | | |____Interfaces.ts
+| | | |____NutriByteLogo.png
+| | |____components
+| | | |____Background
+| | | | |____Background.jsx
+| | | | |____Background.module.css
+| | | |____Fetching
+| | | | |____Fetching.jsx
+| | | | |____Fetching.module.css
+| | | |____FoodLabel
+| | | | |____FoodLabel.module.css
+| | | | |____FoodLabel.tsx
+| | | |____FoodList
+| | | | |____FoodList.jsx
+| | | | |____FoodList.module.css
+| | | |____Footer
+| | | | |____Footer.jsx
+| | | | |____Footer.module.css
+| | | |____Header
+| | | | |____Header.jsx
+| | | | |____header.module.css
+| | | |____MacroFoodList
+| | | | |____MacroFoodList.jsx
+| | | |____MacroRangeSlider
+| | | | |____MacroRangeSlider .jsx
+| | | |____Navbar
+| | | | |____Navbar.jsx
+| | | | |____Navbar.module.css
+| | |____logic
+| | | |____apiManager.jsx
+| | | |____LoadingInterceptor.jsx
+| | | |____LoadingProvider.jsx
+| | |____main
+| | | |____main.jsx
+| | | |____main.module.css
+| | |____pages
+| | | |____CompareFood
+| | | | |____CompareFood.jsx
+| | | | |____CompareFood.module.css
+| | | |____CustomMeals
+| | | | |____CustomMeals.jsx
+| | | | |____CustomMeals.module.css
+| | | |____FoodLabelPage
+| | | | |____FoodLabelPage.jsx
+| | | |____LandingPage
+| | | | |____LandingPage.jsx
+| | | | |____LandingPage.module.css
+| | | |____MacroMeals
+| | | | |____MacroMeals.jsx
+| | | | |____MacroMeals.module.css
+| | | |____SearchByBrand
+| | | | |____SearchByBrand.jsx
+| | | | |____SearchByBrand.module.css
+| | | |____SearchFood
+| | | | |____SearchFood.jsx
+| | | | |____SearchFood.module.css
+| | |____services
+| | | |____AppRouterManager.jsx
+| | | |____axiosConfig.js
+| | | |____foodServices.js
+| | | |____searchService.js
+| | | |____userService.js
+| | |____types
+| | | |____cssModules.d.ts
+| |____tailwind.config.js
+| |____tsconfig.json
+|____package-lock.json
+|____package.json
+|____README.md
+|____star-app.jsx

@@ -6,35 +6,39 @@ import { Link } from 'react-router-dom';
 
 const FoodList = ({ foods, searchString }) =>
 {
+  if (!Array.isArray(foods)) return <p>No matching results found.</p>;
 
-
-  const [loading, setLoading] = useState();
-  const [localFoods, setLocalFoods] = useState([]);
-
-
-  if (loading) return <p className="text-center">Loading nutrition label...</p>;
 
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Results for “{searchString || '...'}”</h2>
-      <ul className={styles.list}>
-        {Array.isArray(foods) && foods.length > 0 ?
-          (
-            foods.map((food) => (
-              <li key={food.fdcId} className={styles.item}>
-                <Link to={`/label/${food.fdcId}`} className="text-blue-600 underline">
-                  <strong>{food.fdcId}</strong>
-                </Link>: {food.description} ({food.brandOwner})
-              </li>))
-          )
-          :
-          (
-            <p>No matching results found.</p>
-          )
-        }
-      </ul>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th className="px-4 py-2 text-left">ID</th>
+              <th className="px-4 py-2 text-left">Description</th>
+              <th className="px-4 py-2 text-left">Brand</th>
+            </tr>
+          </thead>
+          <tbody>
+            {foods.map((food) => (
+              <tr key={food.fdcId} className="border-t">
+                <td className="px-4 py-2">
+                  <Link to={`/label/${food.fdcId}`} className="text-blue-600 underline">
+                    {food.fdcId}
+                  </Link>
+                </td>
+                <td className="px-4 py-2">{food.description}</td>
+                <td className="px-4 py-2">{food.brandOwner || "N/A"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
+
 
 export default FoodList;

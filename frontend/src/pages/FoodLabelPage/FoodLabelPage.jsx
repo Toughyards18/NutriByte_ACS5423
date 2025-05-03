@@ -54,7 +54,21 @@ export default function FoodLabelPage()
 
     loadFoodWithCache(fdcId).then((fetchedFood) =>
     {
-      setFood(fetchedFood);
+      let formattedFood = fetchedFood;
+
+      if (fetchedFood && !fetchedFood.description)
+      {
+        formattedFood = {
+          fdcId: fetchedFood[0]?.fdcId,
+          description: "Unknown Food",
+          brandOwner: "N/A",
+          servingSize: 100,
+          servingSizeUnit: "g",
+          nutrients: fetchedFood, // assume original food is array of nutrients
+        };
+      }
+
+      setFood(formattedFood);
       setLoading(false);
     });
   }, [fdcId]);

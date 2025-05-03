@@ -21,9 +21,11 @@
 		"axios": "^1.8.4",
 		"nutribyte-frontend": "file:",
 		"react": "^18.2.0",
+		"react-circular-progressbar": "^2.2.0",
 		"react-dom": "^18.2.0",
 		"react-range": "^1.10.0",
-		"react-router-dom": "^6.30.0"
+		"react-router-dom": "^6.30.0",
+		"recharts": "^2.15.3"
 	},
 	"devDependencies": {
 		"@types/react": "^19.1.2",

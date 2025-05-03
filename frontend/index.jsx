@@ -10,8 +10,6 @@ import { LoadingProvider } from "./src/logic/LoadingProvider.jsx"; // Importing 
 
 import "./index.css";
 
-
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
@@ -21,13 +19,3 @@ root.render(
 	</React.StrictMode>
 );
 
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(
-// 	<React.StrictMode>
-// 		<mainApp />
-// 		{/* <LoadingProvider>
-// 			<mainApp />
-// 		</LoadingProvider> */}
-// 	</React.StrictMode>
-// );

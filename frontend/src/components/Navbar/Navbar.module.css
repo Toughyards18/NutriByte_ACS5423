@@ -35,7 +35,7 @@
     height: 3rem; /* Adjust size for better fit */
     width: 3rem;
     border-radius: 50%;
-    background-image: url("../../../public/NutriByteLogo.png");
+    background-image: url("../../assets/NutriByteLogo.png"); /* Path to your image */
     background-size: cover; /* Ensure the image covers the container */
     background-repeat: no-repeat;
     background-position: center;
