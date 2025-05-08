@@ -133,6 +133,6 @@ node star-app.jsx
 **start**
 
 ```bash
-    cd backend &&
+    cd backend
     run start
 ```
