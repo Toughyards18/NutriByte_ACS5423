@@ -23,7 +23,7 @@ const FoodList = ({ foods, searchString }) =>
           </thead>
           <tbody>
             {foods.map((food) => (
-              <tr key={food.fdcId} className="border-t">
+              <tr className={styles.ListEntry} key={food.fdcId}>
                 <td className="px-4 py-2">
                   <Link to={`/label/${food.fdcId}`} className="text-blue-600 underline">
                     {food.fdcId}

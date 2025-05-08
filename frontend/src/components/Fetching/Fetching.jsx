@@ -17,7 +17,7 @@ export default function Fetching({ message = "Loading..." })
                 <div className={classes.image}>
                     <div className={classes.imageInner} >
                         <h1>{message}</h1>
-                        <img src="../../../public/Fetching.gif" alt="Loading!" />
+                        <img src="../../assets/Fetching.gif" alt="Loading!" />
                     </div>
                 </div>
             </div>
