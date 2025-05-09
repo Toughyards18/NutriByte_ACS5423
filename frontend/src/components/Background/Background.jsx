@@ -5,12 +5,12 @@
 import React from 'react';
 import classes from './Background.module.css';
 
-export default function Background()
+export default function Background({ children })
 {
-
   return (
-    <div>
-      <div className={classes.LogoContainer} />
+    <div className={classes.LogoContainer}>
+      <div className={classes.Logo} />
+      {children}
     </div>
   );
 }

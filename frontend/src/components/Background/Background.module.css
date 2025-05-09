@@ -1,19 +1,29 @@
 /* src/components/Background/Background.module.css */
 /* This file contains the styles for the Background component */
 /* This component is used to create a background for the application */
+/* The background is a blurred logo of the application */
+/* The logo is positioned absolutely to cover the entire viewport */
+
 
 .LogoContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
-    z-index: -1;
-    opacity: 0.5;
-
-    background-color: #89958e;
+    position: absolute; /* Position the logo absolutely */    
+    width: 100vw; /* Full width of the parent container */
+    height: 95ex; /* Full height of the parent container */ 
+    overflow: hidden; /* Hide any overflow */
+    z-index: -1; /* Keep the background behind other content */
+}
+.Logo{
+    width: 100%; /* Constrained to the width of the LogoContainer */
+    height: 95%; /* Constrained to the height of the LogoContainer */
+    opacity: 0.25; /* Set the opacity to 0.5 for a subtle effect */        
     background-image: url("../../assets/NutriByteLogo.png");
     background-size: contain; /* Ensures the image covers the entire container */
-    background-repeat: no-repeat;
-    background-position: center;
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image in the container */
+    background-attachment: scroll; /* Allows the image to scroll with the page */
+    z-index: -2; /* Ensure it stays behind the LogoContainer */
+    position: absolute; /* Keep it positioned behind content */
+    
+    z-index: -10; /* Ensure it is behind other content */
+    filter: blur(10px);
 }

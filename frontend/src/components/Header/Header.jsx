@@ -8,7 +8,7 @@ export default function Header() {
 			<div className={classes.container}>
 				<section className={classes.TitleArea}>
 					<h1 className={classes.title}>NutriByte!!!!!!!!!!</h1>
-					<img src="../../../public/NutriByteLogo.png" alt="Logo" />
+					<img src="../../assets/l	ogo.png" alt="Logo" className={classes.logo} />
 				</section>
 				<ul className={classes.navList}>
 					<li>
