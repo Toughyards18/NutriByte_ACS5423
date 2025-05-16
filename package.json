@@ -15,6 +15,12 @@
 		"npm": "10.x"
 	},
 	"scripts": {
+	
+		"setup-backend": "cd backend && npm install express && npm install mongoose && npm install && npm start",
+    	"setup-backend-upload": "cd backend && npm install express && npm install mongoose && npm install && node ./utils/uploadAllFoods.js && npm start",
+    	"setup-frontend": "cd frontend && npm install && npm install -D tailwindcss && npm run start",
+		"Local-startup": "npm run setup-backend-upload && npm run setup-frontend",
+
 		"prebuild": "cd backend && npm install && cd ../frontend && npm install && cd ../ && rm -rf backend/public",
 		"build": "cd frontend &&  npm run build",
 		"postbuild": "mv -f frontend/dist backend/public",

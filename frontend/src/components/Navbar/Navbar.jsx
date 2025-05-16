@@ -37,7 +37,8 @@ export default function Navbar()
 				<Link to="/compare">Compare</Link>
 				<Link to="/custom">Custom Meals</Link>
 				<Link to="/macros">Macros</Link>
-				{isLoggedIn ?
+				<Link to="/dashboard">Dashboard</Link>
+				{/* {isLoggedIn ?
 					(
 						<>
 							<Link to="/dashboard">Dashboard</Link>
@@ -50,7 +51,7 @@ export default function Navbar()
 							<Link to="/login">Login</Link>
 							<Link to="/register">Register</Link>
 						</>
-					)}
+					)} */}
 			</div>
 		</nav>
 	);

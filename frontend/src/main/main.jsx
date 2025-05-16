@@ -44,7 +44,9 @@ function App()
 				<Route path="/label/:fdcId" element={<FoodLabelPage />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
-				<Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+				<Route path="/dashboard" element={<Dashboard />} />
+
+				{/* <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} /> */}
 			</Routes>
 			<Footer />
 		</Router>
